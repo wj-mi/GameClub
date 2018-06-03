@@ -32,7 +32,9 @@ class GameClub(object):
     def applyEnterClub(self, uid):
         """玩家申请加入俱乐部
         """
-        pass 
+        cur_time = time.time()
+        err, data = gameDataInterface.create_club_apply(0, self._clubID, uid, cur_time)
+        return err, data
 
     def managerClubMember(self, uid, targetUID, opr):
         """

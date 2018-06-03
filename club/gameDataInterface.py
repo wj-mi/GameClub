@@ -18,6 +18,7 @@ def getTopPlayer(*args, **kwargs):
     ret = kwargs["ret"]
     return ErrorCode.ERR_OK, ret
 
+
 def get_user_uid_by_sid(sid):
     res = globalDB.Call('get_user_uid_by_sid',(sid,))
     if not res:
@@ -25,23 +26,28 @@ def get_user_uid_by_sid(sid):
     else:
         return res[0]['uid']
 
+
 @hadGetData("get_active_time")
 def getPlayerActiveTime(uid, **kwargs):
     ret = kwargs["ret"][0]
     return ErrorCode.ERR_OK, ret
 
+
 @hadGetData("set_active_time")
 def updatePlayerActiveTime(*args, **kwargs):
-    pass 
+    pass
+
 
 @hadGetData("get_all_club")
 def getAllClub(self, **kwargs):
     ret = kwargs["ret"][0]
 
+
 @hadGetData("get_round_account")
 def getRoundAccount(*args, **kwargs):
     ret = kwargs["ret"]
     return ErrorCode.ERR_OK, ret
+
 
 @hadGetData("get_round_history")
 def getRoundHistory(*args, **kwargs):
@@ -53,6 +59,7 @@ def getRoundHistory(*args, **kwargs):
 def getSigninReward(*args, **kwargs):
     ret = kwargs["ret"][0]
     return ErrorCode.ERR_OK, ret
+
 
 @hadGetData("get_reward")
 def getShareReward(*args, **kwargs):
@@ -89,4 +96,12 @@ def saveOrder(uid, orderID, money):
 
 @hadGetData("user_logout_update_online")
 def logout_update_online_info(*args, **kwargs):
-    pass 
+    pass
+
+
+@hadGetData("club_apply_handle")
+def create_club_apply(*args, **kwargs):
+    if "ret" in kwargs:
+        ret = kwargs["ret"][0]
+        return ErrorCode.ERR_OK, ret
+    return ErrorCode.ERR_FAIL, []
